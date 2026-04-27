@@ -51,6 +51,23 @@ Upewnij się że jest w `.gitignore`.
 | POST | `/wyceny` | Oblicz koszt ładowania (kWh × cena + opłata) |
 | GET | `/wyceny` | To samo przez query params |
 
+### Orders
+| Metoda | Endpoint | Opis |
+|--------|----------|------|
+| POST | `/orders` | Złóż zamówienie ładowania |
+| GET | `/orders` | Moje zamówienia |
+| GET | `/orders/:id` | Szczegóły zamówienia |
+| PATCH | `/orders/:id/status` | Zmień status (operator) |
+
+### Vehicles
+| Metoda | Endpoint | Opis |
+|--------|----------|------|
+| GET | `/vehicles` | Lista wszystkich modeli EV |
+| GET | `/vehicles/:id` | Szczegóły modelu EV |
+| POST | `/vehicles` | Dodaj model EV |
+| PATCH | `/vehicles/:id` | Edytuj model EV |
+| DELETE | `/vehicles/:id` | Usuń model EV |
+
 ## Struktura projektu
 
 ```
@@ -83,10 +100,3 @@ src/
 | `vehicles` | Modele EV z parametrami |
 | `statuses` | Statusy zamówień z kolorami |
 
-## TODO (kolejne zadania)
-
-- [ ] API modeli EV (`/vehicles`)
-- [ ] Endpoint wyceny powiązany z pojazdem
-- [ ] API zamówień + zmiany statusów
-- [ ] Integracja Mapbox (ETA, odległość)
-- [ ] API panelu admina (statystyki, ceny)
