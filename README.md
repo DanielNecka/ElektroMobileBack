@@ -1,5 +1,4 @@
-README.md — zaktualizuj całość:
-markdown# ⚡ Elektromobile API — NestJS + Firebase
+# Elektromobile API — NestJS + Firebase
 
 Backend platformy do mobilnego ładowania samochodów elektrycznych.
 
@@ -32,7 +31,10 @@ Swagger: **http://localhost:3000/api**
 ## Konfiguracja
 
 Wrzuć plik klucza Firebase do głównego folderu projektu:
+
+
 firebase-key.json
+
 Upewnij się że jest w `.gitignore`.
 
 ## Endpointy (aktualne)

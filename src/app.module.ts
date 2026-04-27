@@ -6,10 +6,11 @@ import { FirebaseModule } from './firebase/firebase.module';
 import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
+import { VehiclesModule } from './vehicles/vehicles.module';
 
 
 @Module({
-  imports: [WycenyModule, FirebaseModule, AuthModule],
+  imports: [WycenyModule, FirebaseModule, AuthModule, VehiclesModule],
   controllers: [AppController, AuthController],
   providers: [AppService, AuthService],
 })
