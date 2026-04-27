@@ -52,9 +52,12 @@ Upewnij się że jest w `.gitignore`.
 | GET | `/wyceny` | To samo przez query params |
 
 ## Struktura projektu
+
+```
 src/
 ├── auth/
-│   ├── dto/register.dto.ts
+│   ├── dto/
+│   │   └── register.dto.ts
 │   ├── firebase-auth.guard.ts
 │   ├── auth.controller.ts
 │   ├── auth.service.ts
@@ -69,6 +72,7 @@ src/
 │   └── wyceny.module.ts
 ├── app.module.ts
 └── main.ts
+```
 
 ## Firestore — kolekcje
 
