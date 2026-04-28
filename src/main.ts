@@ -6,6 +6,10 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
+  app.enableCors({
+    origin: ['http://localhost:4200', 'https://localhost:4200'],
+    credentials: true,
+  });
 
   const config = new DocumentBuilder()
     .setTitle('Energia API')
