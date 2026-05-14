@@ -24,7 +24,7 @@ export class OrdersService {
       locationLat: dto.locationLat,
       locationLng: dto.locationLng,
       totalPrice,
-      statusId: 'Szukamy kierowcy',
+      statusId: 'Oczekuje na kierowce',
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -69,5 +69,22 @@ export class OrdersService {
     });
 
     return { id, ...doc.data(), statusId: dto.statusId };
+  }
+
+  async acceptOrder(id: string, driverUid: string) {
+    const ref = this.firebaseService.getDb().collection('orders').doc(id);
+    const doc = await ref.get();
+
+    if (!doc.exists) {
+      throw new NotFoundException('Zamówienie nie znalezione');
+    }
+
+    await ref.update({
+      statusId: 'Kierowca przydzielony',
+      driverUid: driverUid,
+      updatedAt: new Date(),
+    });
+
+    return { id, ...doc.data(), statusId: 'Kierowca przydzielony', driverUid };
   }
 }

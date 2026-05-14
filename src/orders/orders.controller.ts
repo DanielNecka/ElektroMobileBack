@@ -37,4 +37,10 @@ export class OrdersController {
   updateStatus(@Param('id') id: string, @Body() dto: UpdateOrderStatusDto) {
     return this.ordersService.updateStatus(id, dto);
   }
+
+  @Patch(':id/accept')
+  @ApiOperation({ summary: 'Zaakceptuj zamówienie przez kierowcę' })
+  acceptOrder(@Param('id') id: string, @Body('driverUid') driverUid: string) {
+    return this.ordersService.acceptOrder(id, driverUid);
+  }
 }
