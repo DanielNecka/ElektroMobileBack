@@ -15,6 +15,8 @@ export class OrdersController {
   @Post()
   @ApiOperation({ summary: 'Złóż zamówienie ładowania' })
   create(@Req() req, @Body() dto: CreateOrderDto) {
+    console.log('Received order DTO:', dto);
+    console.log('User:', req.user);
     return this.ordersService.create(req.user.uid, dto);
   }
 

@@ -13,29 +13,16 @@ export class OrdersService {
   async create(uid: string, dto: CreateOrderDto) {
     const db = this.firebaseService.getDb();
 
-    // Pobierz dane pojazdu
-    const vehicleDoc = await db.collection('vehicles').doc(dto.vehicleId).get();
-    if (!vehicleDoc.exists) {
-      throw new NotFoundException('Pojazd nie znaleziony');
-    }
-    const vehicle = vehicleDoc.data()!;
-
-    // Oblicz energię i koszt
-    const energyKwh = parseFloat(
-      ((dto.batteryTo - dto.batteryFrom) / 100 * vehicle.batteryCapacityKwh).toFixed(2)
-    );
-    const totalPrice = parseFloat(
-      (energyKwh * PRICE_PER_KWH + TRAVEL_FEE).toFixed(2)
-    );
+    const energyKwh = Number(dto.kwh.toFixed(2));
+    const totalPrice = Number((energyKwh * PRICE_PER_KWH + TRAVEL_FEE).toFixed(2));
 
     const order = {
       userId: uid,
-      vehicleId: dto.vehicleId,
-      batteryFrom: dto.batteryFrom,
-      batteryTo: dto.batteryTo,
+      brand: dto.brand,
+      model: dto.model,
+      kwh: energyKwh,
       locationLat: dto.locationLat,
       locationLng: dto.locationLng,
-      energyKwh,
       totalPrice,
       statusId: 'Szukamy kierowcy',
       createdAt: new Date(),

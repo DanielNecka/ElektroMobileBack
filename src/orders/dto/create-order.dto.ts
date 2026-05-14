@@ -1,22 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNumber, Min, Max } from 'class-validator';
+import { IsString, IsNumber } from 'class-validator';
 
 export class CreateOrderDto {
-  @ApiProperty({ example: '0HE45eENd0Ipbzw5XwFO' })
+  @ApiProperty({ example: 'Tesla' })
   @IsString()
-  vehicleId!: string;
+  brand!: string;
 
-  @ApiProperty({ example: 20 })
-  @IsNumber()
-  @Min(0)
-  @Max(100)
-  batteryFrom!: number;
+  @ApiProperty({ example: 'Model 3' })
+  @IsString()
+  model!: string;
 
-  @ApiProperty({ example: 60 })
+  @ApiProperty({ example: 25 })
   @IsNumber()
-  @Min(0)
-  @Max(100)
-  batteryTo!: number;
+  kwh!: number;
 
   @ApiProperty({ example: 52.2297 })
   @IsNumber()
