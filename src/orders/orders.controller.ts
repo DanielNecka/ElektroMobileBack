@@ -40,7 +40,7 @@ export class OrdersController {
 
   @Patch(':id/accept')
   @ApiOperation({ summary: 'Zaakceptuj zamówienie przez kierowcę' })
-  acceptOrder(@Param('id') id: string, @Body('driverUid') driverUid: string) {
-    return this.ordersService.acceptOrder(id, driverUid);
+  acceptOrder(@Param('id') id: string, @Req() req) {
+    return this.ordersService.acceptOrder(id, req.user.uid);
   }
 }
